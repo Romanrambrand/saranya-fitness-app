@@ -1,0 +1,969 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff7f7">
+  <meta name="description" content="Saranya's bilingual 100-day postpartum core and gentle weight-wellness challenge.">
+  <title>Saranya's 100-Day Postpartum Tummy Tucking & 5 kg Challenge</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rose: { 25: "#fffafa", 50: "#fff4f4", 100: "#ffe7e8", 200: "#ffd0d4", 500: "#e56f83", 600: "#cf536b", 700: "#aa3f58" },
+            sage: { 50: "#eff8f2", 100: "#dcefe1", 500: "#4b9b6d", 600: "#347c54", 700: "#286344" }
+          },
+          boxShadow: { soft: "0 18px 50px rgba(133, 66, 80, .09)" }
+        }
+      }
+    };
+  </script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <style>
+    :root { color-scheme: light; scroll-behavior: smooth; --app-rose: #e56f83; --app-emerald: #10b981; }
+    body { background: radial-gradient(ellipse at 8% 0%, #fff0f2 0, transparent 30rem), linear-gradient(180deg, #fffafa 0%, #fff 70%); }
+    header { position: sticky; top: 0; z-index: 30; backdrop-filter: blur(16px); background: rgba(255,255,255,.9); }
+    main { padding-bottom: calc(7rem + env(safe-area-inset-bottom)); }
+    .tab-panel[hidden] { display: none !important; }
+    .app-nav { position: fixed; z-index: 50; right: 50%; bottom: 0; width: min(100%, 480px); transform: translateX(50%); padding: .5rem .75rem calc(.5rem + env(safe-area-inset-bottom)); border-top: 1px solid #f1e5e7; background: rgba(255,255,255,.94); backdrop-filter: blur(18px); box-shadow: 0 -8px 28px rgba(71, 43, 51, .08); }
+    .app-nav-button { display: flex; min-width: 0; flex: 1; flex-direction: column; align-items: center; justify-content: center; gap: .2rem; border-radius: 1rem; padding: .45rem .25rem; color: #64748b; transition: color .18s ease, background-color .18s ease; }
+    .app-nav-button[aria-current="page"] { color: #cf536b; background: #fff4f4; }
+    .app-nav-button[aria-current="page"] .nav-icon { background: #ffe7e8; }
+    .demo-panel.is-modal { position: fixed; inset: 50% auto auto 50%; z-index: 80; display: block; width: min(calc(100vw - 1.5rem), 440px); max-height: min(88dvh, 780px); overflow-y: auto; transform: translate(-50%, -50%); margin: 0; box-shadow: 0 24px 90px rgba(15, 23, 42, .3); }
+    .demo-backdrop { position: fixed; inset: 0; z-index: 70; background: rgba(15, 23, 42, .56); backdrop-filter: blur(5px); }
+    body.modal-open { overflow: hidden; }
+    .day-button { transition: transform .16s ease, background-color .16s ease, border-color .16s ease, box-shadow .16s ease; }
+    .day-button:hover { transform: translateY(-2px); }
+    .day-button[aria-pressed="true"] { box-shadow: 0 5px 14px rgba(207,83,107,.24); }
+    .day-button:focus-visible, button:focus-visible, input:focus-visible + span { outline: 3px solid #e56f83; outline-offset: 3px; }
+    button { -webkit-tap-highlight-color: transparent; }
+    .continue-button { box-shadow: 0 10px 24px rgba(190,69,96,.25); transition: transform .18s ease, box-shadow .18s ease, filter .18s ease; }
+    .continue-button:hover { transform: translateY(-2px); box-shadow: 0 14px 28px rgba(190,69,96,.3); filter: saturate(1.08); }
+    .continue-button:active { transform: scale(.98); }
+    .exercise-check:checked + .checkbox-indicator { border-color: #10b981; background: #10b981; color: #fff; animation: check-pop .28s ease-out; }
+    .exercise-card { transition: border-color .2s ease, box-shadow .2s ease; }
+    .exercise-card:hover { box-shadow: 0 14px 30px rgba(71, 85, 105, .09); }
+    .exercise-card.is-done { border-color: rgba(16, 185, 129, .4); background: #fff; }
+    @keyframes check-pop { 0% { transform: scale(.82); box-shadow: 0 0 0 0 rgba(16,185,129,.35); } 70% { transform: scale(1.12); box-shadow: 0 0 0 7px rgba(16,185,129,0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(16,185,129,0); } }
+    .bar-fill { transition: width .35s ease; }
+    .bar-fill::after { content: ""; display: block; height: 100%; width: 35%; margin-left: auto; background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent); animation: progress-glint 2.6s ease-in-out infinite; }
+    @keyframes progress-glint { from { transform: translateX(-180%); } to { transform: translateX(280%); } }
+    .exercise-card { animation: card-in .35s both; }
+    .exercise-card:nth-child(2) { animation-delay: 25ms; }
+    .exercise-card:nth-child(3) { animation-delay: 50ms; }
+    .exercise-card:nth-child(4) { animation-delay: 75ms; }
+    .exercise-card:nth-child(5) { animation-delay: 100ms; }
+    .exercise-card:nth-child(6) { animation-delay: 125ms; }
+    @keyframes card-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 640px) {
+      #continue-button { justify-content: center; }
+      .exercise-card:hover { box-shadow: 0 4px 16px rgba(71,85,105,.06); }
+      .demo-panel { padding: .875rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body class="min-h-screen text-slate-800 antialiased">
+  <header class="border-b border-rose-100 bg-white/90">
+    <div class="mx-auto flex max-w-[480px] items-center justify-between gap-3 px-4 py-3">
+      <a href="#" class="flex items-center gap-3 rounded-xl" aria-label="Saranya's challenge home">
+        <span class="grid h-11 w-11 place-items-center rounded-2xl bg-rose-100 text-rose-600"><i data-lucide="heart" class="h-5 w-5"></i></span>
+        <span>
+          <span class="block text-sm font-extrabold tracking-tight text-slate-900">Saranya's Core Journey</span>
+          <span class="block text-xs text-slate-500">சரண்யா அக்காவின் பயணம்</span>
+        </span>
+      </a>
+      <button id="reset-button" type="button" class="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-600 hover:border-rose-200 hover:bg-rose-50 hover:text-rose-700">
+        <i data-lucide="rotate-ccw" class="h-4 w-4"></i><span>Reset progress</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-[480px] px-4 py-5">
+    <section data-tab-panel="home" class="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-rose-100 via-rose-50 to-white p-5 shadow-soft sm:p-6">
+      <div class="pointer-events-none absolute -right-10 -top-14 h-56 w-56 rounded-full bg-white/50"></div>
+      <div class="relative grid gap-8 lg:grid-cols-[1.35fr_.65fr] lg:items-center">
+        <div>
+          <div class="mb-4 inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-rose-700">
+            <i data-lucide="sparkles" class="h-4 w-4"></i> 100 days, one gentle step at a time
+          </div>
+          <div class="mb-2 inline-flex rounded-full bg-sage-50 px-3 py-1 text-xs font-extrabold text-sage-700">100-DAY POSTPARTUM TUMMY TUCKING & 5 KG WELLNESS CHALLENGE</div>
+          <h1 class="max-w-2xl text-3xl font-black leading-tight tracking-tight text-slate-900 sm:text-5xl">A stronger core, at <span class="text-rose-600">your pace.</span></h1>
+          <p class="mt-3 max-w-2xl text-base leading-7 text-slate-600">Welcome, <strong>Saranya</strong> <span class="font-semibold text-rose-700">(சரண்யா அக்கா)</span>. Designed for a postpartum journey around 90 days after delivery—start only after your healthcare professional clears you. The 5 kg goal is an aspiration, not a promise or deadline; your recovery, nourishment and wellbeing come first.</p>
+          <p class="mt-2 text-sm text-slate-500">மெதுவாக முன்னேறுங்கள். உங்கள் உடல் சொல்வதைக் கேட்டு, ஒவ்வொரு சிறிய முன்னேற்றத்தையும் கொண்டாடுங்கள்.</p>
+        </div>
+        <div class="rounded-3xl border border-white/80 bg-white/90 p-5 shadow-sm">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Selected day · தேர்ந்தெடுத்த நாள்</p>
+              <p id="phase-name" class="mt-1 text-xl font-extrabold text-slate-900"></p>
+              <p id="phase-tamil" class="mt-1 text-sm text-slate-500"></p>
+            </div>
+            <span id="phase-badge" class="shrink-0 rounded-full bg-rose-100 px-3 py-1.5 text-xs font-bold text-rose-700"></span>
+          </div>
+          <div class="mt-5 flex items-center justify-between text-sm">
+            <span class="font-semibold text-slate-600">Overall journey · மொத்த முன்னேற்றம்</span>
+            <span id="overall-percent" class="font-extrabold text-rose-700">0%</span>
+          </div>
+          <div class="mt-2 h-3 overflow-hidden rounded-full bg-rose-100" role="progressbar" aria-label="Overall challenge progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="overall-progress">
+            <div id="overall-fill" class="bar-fill h-full rounded-full bg-gradient-to-r from-rose-500 to-sage-500" style="width:0%"></div>
+          </div>
+          <p id="overall-count" class="mt-2 text-xs text-slate-500">0 of 100 days complete</p>
+          <button id="continue-button" type="button" class="continue-button mt-4 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-rose-600 to-rose-500 px-4 py-2.5 text-sm font-extrabold text-white">
+            <i data-lucide="play" class="h-4 w-4"></i><span id="continue-label">Continue · Day 1</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div data-tab-panel="home" role="status" aria-live="polite" id="storage-message" class="mt-4 hidden rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900"></div>
+
+    <section data-tab-panel="home" class="mt-4 grid gap-4 sm:grid-cols-3" aria-label="Saranya's wellness profile">
+      <article class="rounded-2xl border border-rose-100 bg-white p-5 shadow-sm">
+        <p class="text-xs font-bold uppercase tracking-wider text-rose-600">Your profile · உங்கள் விவரம்</p>
+        <div class="mt-3 grid grid-cols-3 gap-2 text-center">
+          <div class="rounded-xl bg-slate-50 p-2"><p class="text-xs text-slate-500">Height</p><p class="font-extrabold text-slate-800">160 cm</p></div>
+          <div class="rounded-xl bg-rose-50 p-2"><p class="text-xs text-slate-500">Current</p><p class="font-extrabold text-slate-800">55 kg</p></div>
+          <div class="rounded-xl bg-sage-50 p-2"><p class="text-xs text-slate-500">Goal</p><p class="font-extrabold text-sage-700">50 kg</p></div>
+        </div>
+        <p class="mt-2 text-xs leading-5 text-slate-500">A gentle, clinician-guided goal—not a required outcome. மெதுவான, நிபுணர் வழிகாட்டும் இலக்கு.</p>
+      </article>
+      <article class="rounded-2xl border border-rose-100 bg-white p-5 shadow-sm sm:col-span-2">
+        <div class="flex items-center justify-between gap-3">
+          <div><p class="text-xs font-bold uppercase tracking-wider text-rose-600">Daily movement plan · தினசரி பயிற்சி</p><p class="mt-1 font-extrabold text-slate-900">45 minutes · 6 guided tasks</p></div>
+          <span class="rounded-full bg-sage-50 px-3 py-1.5 text-xs font-extrabold text-sage-700">30–45 min range</span>
+        </div>
+        <div class="mt-3 grid grid-cols-2 gap-2 text-xs sm:grid-cols-4">
+          <div class="rounded-xl bg-rose-50 p-2.5"><strong class="block text-rose-700">5 min</strong><span>Warm-up · சூடுபடுத்தல்</span></div>
+          <div class="rounded-xl bg-slate-50 p-2.5"><strong class="block text-slate-700">15 min</strong><span>Core · மையத் தசை</span></div>
+          <div class="rounded-xl bg-sage-50 p-2.5"><strong class="block text-sage-700">15 min</strong><span>Easy cardio · எளிய இதயப் பயிற்சி</span></div>
+          <div class="rounded-xl bg-amber-50 p-2.5"><strong class="block text-amber-700">10 min</strong><span>Cool-down · தளர்வு</span></div>
+        </div>
+      </article>
+    </section>
+
+    <section data-tab-panel="home" class="mt-4 grid grid-cols-2 gap-3">
+      <article class="flex items-center gap-4 rounded-2xl border border-rose-100 bg-white p-5 shadow-sm">
+        <span class="grid h-12 w-12 place-items-center rounded-2xl bg-rose-50 text-rose-600"><i data-lucide="flame" class="h-6 w-6"></i></span>
+        <div><p class="text-sm font-medium text-slate-500">Current streak · தொடர்ச்சி</p><p class="text-2xl font-black text-slate-900"><span id="streak-count">0</span> <span class="text-base font-bold">days</span></p></div>
+      </article>
+      <article class="flex items-center gap-4 rounded-2xl border border-rose-100 bg-white p-5 shadow-sm">
+        <span class="grid h-12 w-12 place-items-center rounded-2xl bg-sage-50 text-sage-600"><i data-lucide="calendar-check" class="h-6 w-6"></i></span>
+        <div><p class="text-sm font-medium text-slate-500">Days completed · முடித்த நாட்கள்</p><p class="text-2xl font-black text-slate-900"><span id="days-count">0</span><span class="text-base font-bold text-slate-500"> / 100</span></p></div>
+      </article>
+      <article class="flex items-center gap-4 rounded-2xl border border-rose-100 bg-white p-5 shadow-sm">
+        <span class="grid h-12 w-12 place-items-center rounded-2xl bg-amber-50 text-amber-600"><i data-lucide="sun" class="h-6 w-6"></i></span>
+        <div><p class="text-sm font-medium text-slate-500">A kind reminder · நினைவூட்டல்</p><p id="motivation" class="text-sm font-bold text-slate-800">Small steps count.</p></div>
+      </article>
+      <article class="rounded-2xl border border-rose-100 bg-white p-4 shadow-sm">
+        <div class="flex items-center justify-between gap-2">
+          <div><p class="text-xs font-bold uppercase tracking-wide text-rose-600">Today's quick progress</p><p id="today-quick-progress" class="mt-1 text-sm font-extrabold text-slate-900">0 of 6 done</p></div>
+          <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-rose-50 text-rose-600"><i data-lucide="list-checks" class="h-5 w-5"></i></span>
+        </div>
+        <div class="mt-3 h-2 overflow-hidden rounded-full bg-rose-100"><div id="today-quick-fill" class="bar-fill h-full rounded-full bg-emerald-500" style="width:0%"></div></div>
+      </article>
+    </section>
+
+    <section data-tab-panel="home" class="mt-4 rounded-2xl border border-amber-200 bg-amber-50 p-4 sm:p-5" aria-labelledby="safety-title">
+      <div class="flex items-start gap-3">
+        <i data-lucide="shield-check" class="mt-0.5 h-5 w-5 shrink-0 text-amber-700"></i>
+        <div>
+          <h2 id="safety-title" class="font-extrabold text-amber-950">Your recovery comes first · உங்கள் பாதுகாப்பே முதன்மை</h2>
+          <p class="mt-1 text-sm leading-6 text-amber-900">This is a general wellness tracker, not medical advice. Begin only when your healthcare professional has cleared you for exercise. Postpartum recovery varies; progress by comfort, not by the calendar. Stop and seek guidance if you notice pain, pelvic heaviness/pressure, urine leakage, bleeding, or abdominal bulging/doming. If you had a C-section, complications, pelvic-floor symptoms, or diastasis recti, ask your clinician or pelvic-health physiotherapist to adapt your plan.</p>
+          <p class="mt-1 text-sm leading-6 text-amber-900">வலி, கீழிறங்கும் அழுத்தம், சிறுநீர் கசிவு, இரத்தப்போக்கு அல்லது வயிறு கூம்புதல் ஏற்பட்டால் நிறுத்தி நிபுணரை அணுகுங்கள். உங்கள் மருத்துவரின் அனுமதி பெற்று, உடலின் வசதிக்கேற்ப பயிற்சி செய்யுங்கள்.</p>
+          <p class="mt-2 text-xs font-semibold text-amber-950">Later-phase planks, crunches and climbers are optional progressions—not a requirement. Use an easier option or skip a movement unless you have symptom-free control and professional clearance. Lower-belly fat cannot be spot-reduced. If breastfeeding, recovering from complications, or feeling unusually fatigued, discuss weight goals and exercise with your clinician; avoid restrictive diets and rapid weight-loss plans.</p>
+        </div>
+      </div>
+    </section>
+
+    <section data-tab-panel="water" class="mt-4 rounded-3xl border border-sage-100 bg-white p-5 shadow-soft sm:p-6" aria-labelledby="nutrition-title">
+      <div class="flex items-start gap-3">
+        <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-sage-50 text-sage-700"><i data-lucide="glass-water" class="h-5 w-5"></i></span>
+        <div class="flex-1">
+          <p class="text-xs font-bold uppercase tracking-wider text-sage-700">Daily care · தினசரி கவனம்</p>
+          <h2 id="nutrition-title" class="mt-1 text-xl font-black text-slate-900">Hydration & nourishing food</h2>
+          <div class="mt-4 grid gap-3 sm:grid-cols-2">
+            <article class="rounded-2xl bg-sage-50 p-4">
+              <h3 class="font-extrabold text-sage-800">Hydration · தண்ணீர்</h3>
+              <p id="hydration-tip" class="mt-1 text-sm leading-6 text-slate-700">Keep water nearby and sip regularly, guided by thirst and your clinician's advice. Needs can be higher while breastfeeding or in hot weather; do not force a fixed amount.</p>
+              <p id="hydration-tip-ta" class="mt-1 text-sm leading-6 text-slate-600">தண்ணீரை அருகில் வைத்துக் கொண்டு தாகத்திற்கேற்ப குடியுங்கள். தாய்ப்பால் கொடுக்கும் போது தேவைகள் அதிகரிக்கலாம்; கட்டாய அளவு குடிக்க வேண்டாம்.</p>
+            </article>
+            <article class="rounded-2xl bg-rose-50 p-4">
+              <h3 class="font-extrabold text-rose-800">Nourishment · சத்தான உணவு</h3>
+              <p id="nutrition-tip" class="mt-1 text-sm leading-6 text-slate-700">Choose regular, satisfying meals with a protein source, vegetables or fruit, and fiber-rich grains/beans. Avoid skipping meals, detoxes, or severe restriction—especially while breastfeeding.</p>
+              <p id="nutrition-tip-ta" class="mt-1 text-sm leading-6 text-slate-600">புரதம், காய்கறி/பழம், நார்ச்சத்து உள்ள தானியங்கள் சேர்த்த சமநிலை உணவு எடுத்துக்கொள்ளுங்கள். உணவைத் தவிர்க்காதீர்கள்; கடுமையான கட்டுப்பாடு வேண்டாம்.</p>
+            </article>
+          </div>
+          <p class="mt-3 text-xs leading-5 text-slate-500">No calorie target or weight-loss rate is prescribed here. A registered dietitian or clinician can personalize a safe plan, particularly during lactation. இந்த செயலி கலோரி அல்லது எடை குறைப்பு வேகத்தை நிர்ணயிக்காது; தாய்ப்பால் கொடுத்தால் நிபுணரிடம் ஆலோசிக்கவும்.</p>
+        </div>
+      </div>
+    </section>
+
+    <section data-tab-panel="water" class="mt-4 rounded-3xl border border-sky-100 bg-white p-5 shadow-soft sm:p-6" aria-labelledby="water-title">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wider text-sky-700">Gentle hydration · நீரேற்றம்</p>
+          <h2 id="water-title" class="mt-1 text-xl font-black text-slate-900">Water check-in · <span id="water-count">0/8 Glasses</span></h2>
+          <p class="mt-1 text-sm text-slate-500">A gentle reminder, not a required quota. Sip to thirst; needs vary. · தாகத்திற்கேற்ப குடியுங்கள்; அனைவருக்கும் ஒரே அளவு தேவையில்லை.</p>
+        </div>
+        <button id="water-reset" type="button" class="rounded-xl border border-slate-200 px-3 py-2 text-xs font-bold text-slate-600 hover:bg-slate-50">Reset today's log</button>
+      </div>
+      <div id="water-grid" class="mt-4 grid grid-cols-4 gap-2 sm:grid-cols-8" aria-label="Today's water glasses"></div>
+    </section>
+
+    <div id="journey-workout-group" class="mt-4 grid gap-4">
+      <section data-tab-panel="days" class="rounded-3xl border border-rose-100 bg-white p-5 shadow-soft sm:p-6" aria-labelledby="calendar-title">
+        <div class="flex flex-wrap items-end justify-between gap-3">
+          <div><p class="text-xs font-bold uppercase tracking-wider text-rose-600">Your journey · உங்கள் பயணம்</p><h2 id="calendar-title" class="mt-1 text-xl font-black text-slate-900">Choose a day</h2><p class="mt-1 text-xs text-slate-500">Complete each day to unlock the next · அடுத்த நாளைத் திறக்க இந்நாளை முடிக்கவும்</p></div>
+          <div class="flex flex-wrap gap-x-3 gap-y-1 text-xs text-slate-500">
+            <span class="inline-flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-full bg-rose-500"></span>Selected</span>
+            <span class="inline-flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-full bg-emerald-500"></span>Complete</span>
+            <span class="inline-flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-full bg-slate-300"></span>Locked</span>
+          </div>
+        </div>
+        <div id="day-grid" class="mt-5 grid grid-cols-5 gap-2 sm:grid-cols-10" aria-label="Challenge day selector"></div>
+        <div class="mt-4 grid grid-cols-2 gap-2 border-t border-slate-100 pt-4 text-xs text-slate-500 sm:grid-cols-4">
+          <span><strong class="text-rose-700">1–25</strong> Foundation</span><span><strong class="text-rose-700">26–50</strong> Strength</span><span><strong class="text-rose-700">51–75</strong> Toning</span><span><strong class="text-rose-700">76–100</strong> Sculpt</span>
+        </div>
+      </section>
+
+      <section data-tab-panel="target" id="workout-section" class="rounded-3xl border border-rose-100 bg-white p-5 shadow-soft sm:p-6" aria-labelledby="target-title">
+        <div class="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wider text-rose-600">Today's target · இன்றைய இலக்கு</p>
+            <h2 id="target-title" tabindex="-1" class="mt-1 text-2xl font-black text-slate-900 focus:outline-none">Day <span id="selected-day-label">1</span></h2>
+            <p id="day-theme" class="mt-1 text-sm text-slate-500"></p>
+            <p id="day-duration" class="mt-1 text-xs font-bold text-sage-700"></p>
+          </div>
+          <div class="min-w-[110px] rounded-2xl bg-sage-50 px-4 py-3 text-center">
+            <p id="day-percent" class="text-xl font-black text-sage-700">0%</p>
+            <p class="text-xs font-semibold text-sage-700">complete · முடிந்தது</p>
+          </div>
+        </div>
+        <div class="mt-4 h-2 overflow-hidden rounded-full bg-slate-100" role="progressbar" aria-label="Selected day completion" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0" id="day-progress">
+          <div id="day-fill" class="bar-fill h-full rounded-full bg-sage-500" style="width:0%"></div>
+        </div>
+        <p id="day-progress-label" class="mt-2 text-xs text-slate-500">0 of 6 exercises complete</p>
+        <p class="mt-1 text-[11px] leading-5 text-slate-500">Energy figures are broad estimates only; actual burn varies with pace, recovery and individual factors. They are not a goal to chase. · கலோரி மதிப்பீடு தோராயமானது; இதை இலக்காகத் துரத்த வேண்டாம்.</p>
+        <div id="exercise-list" class="mt-4 space-y-3"></div>
+        <div id="day-celebration" role="status" aria-live="polite" class="mt-4 hidden rounded-2xl border border-sage-100 bg-sage-50 p-4 text-sm font-semibold text-sage-700">
+          <span class="flex items-center gap-2"><i data-lucide="party-popper" class="h-5 w-5"></i> Beautiful work, Saranya! You completed all 6 exercises. ஓய்வும் முன்னேற்றத்தின் ஒரு பகுதி!</span>
+        </div>
+        <p class="mt-4 rounded-xl bg-rose-50 px-4 py-3 text-sm text-rose-800"><strong>Kind tip:</strong> Breathe continuously—exhale with effort, and never push through symptoms. <span class="text-rose-700">மூச்சை அடக்காதீர்கள்; சிரமம் ஏற்பட்டால் ஓய்வெடுங்கள்.</span></p>
+      </section>
+    </div>
+    <footer class="py-8 text-center text-xs leading-5 text-slate-500">Made with care for Saranya · சரண்யாவுக்காக அன்புடன்<br>Progress is personal. Rest days and professional guidance are part of a strong recovery.</footer>
+  </main>
+  <nav class="app-nav" aria-label="Main navigation">
+    <div class="mx-auto flex max-w-[480px] items-stretch gap-1">
+      <button class="app-nav-button" type="button" data-tab-button="home" aria-current="page">
+        <span class="nav-icon grid h-8 w-10 place-items-center rounded-xl"><i data-lucide="house" class="h-5 w-5"></i></span><span class="text-[10px] font-bold">Home</span>
+      </button>
+      <button class="app-nav-button" type="button" data-tab-button="target">
+        <span class="nav-icon grid h-8 w-10 place-items-center rounded-xl"><i data-lucide="target" class="h-5 w-5"></i></span><span class="text-[10px] font-bold">Target</span>
+      </button>
+      <button class="app-nav-button" type="button" data-tab-button="water">
+        <span class="nav-icon grid h-8 w-10 place-items-center rounded-xl"><i data-lucide="droplets" class="h-5 w-5"></i></span><span class="text-[10px] font-bold">Water</span>
+      </button>
+      <button class="app-nav-button" type="button" data-tab-button="days">
+        <span class="nav-icon grid h-8 w-10 place-items-center rounded-xl"><i data-lucide="calendar-days" class="h-5 w-5"></i></span><span class="text-[10px] font-bold">100 Days</span>
+      </button>
+    </div>
+  </nav>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const STORAGE_KEY = "saranya_youtube_app_v5";
+      const PREVIOUS_STORAGE_KEYS = ["saranya_mobile_app_v4", "saranya_fitness_app_v3"];
+      const TOTAL_DAYS = 100;
+      const EXERCISES_PER_DAY = 6;
+      const YOUTUBE_DEMOS = {
+        "Diaphragmatic breathing & dynamic warm-up": "w04SYVEuVq8",
+        "Cool-down & pelvic floor relaxation": "dtklY0Uy0Lo",
+        "Pelvic tilts": "7qgTYFZrGBE",
+        "Heel slides": "XKT2fP3iSa4",
+        "Glute bridges": "hjGVHI3eiPg",
+        "Cat-cow, small range": "x2BzdaSTzfg",
+        "Cat-cow": "x2BzdaSTzfg",
+        "Seated core-breath coordination": "iIGnXB8v0xI",
+        "Easy walk or seated march": "gdy9-Az8Mzg",
+        "Incline knee plank": "vXdO-ctqDok",
+        "Bird-dog, supported reach": "l65waJ7ChD8",
+        "Modified dead-bug heel taps": "3UXD2S0CoAI",
+        "Side-lying leg raise": "xAoGi80XNwg",
+        "Standing march with gentle brace": "FrN3W_UUIlE",
+        "Marching in place": "Ac8M_Osjy6s",
+        "Incline plank hold (optional)": "vXdO-ctqDok",
+        "Supine alternating heel taps": "3UXD2S0CoAI",
+        "Seated thoracic rotation": "smZRsrM3bP4",
+        "Standing glute kick-back": "9YZMkQwG5wo",
+        "Standing side steps or easy march": "hbAU9Q_g5H4",
+        "Incline advanced core hold (optional)": "vXdO-ctqDok",
+        "Low-impact mountain climber (incline)": "P-BpEo_CR4g",
+        "Dynamic core flow": "u3XXc_cTYJU",
+        "Gentle abdominal brace and release": "k3qcFAHrEmE",
+        "Easy walk or low-impact step-touch": "YUq5F4ArHd4"
+      };
+      function move(name, tamil, pose, targets, dose, noteEn, noteTa, doEn, doTa, dontEn, dontTa, segment = "Core") {
+        return {
+          name, tamil, pose, targets, youtubeVideoId: YOUTUBE_DEMOS[name], segment, segmentTamil: segment === "Warm-up" ? "சூடுபடுத்தல்" : segment === "Low-impact cardio" ? "எளிய இதயப் பயிற்சி" : segment === "Cool-down" ? "தளர்வு" : "மையத் தசை",
+          minutes: segment === "Warm-up" ? 5 : segment === "Core" ? 5 : segment === "Low-impact cardio" ? 15 : 10,
+          dose, note: `${noteEn} | ${noteTa}`, do: `${doEn} | ${doTa}`, dont: `${dontEn} | ${dontTa}`,
+          calories: segment === "Warm-up" ? "~10–20 kcal*" : segment === "Core" ? "~10–20 kcal*" : segment === "Low-impact cardio" ? "~35–70 kcal*" : "~10–20 kcal*"
+        };
+      }
+      const warmup = move("Diaphragmatic breathing & dynamic warm-up", "உதரவிதான மூச்சு & மென்மையான சூடுபடுத்தல்", "breath", ["core", "lower", "pelvic"], "5 min · 6 easy breaths, shoulder rolls & ankle circles", "Sit or stand comfortably; expand the ribs as you inhale and exhale without bearing down.", "வசதியாக அமர்ந்து அல்லது நின்று, மூச்சை மெதுவாக வெளியே விடுங்கள்; கீழ்நோக்கி அழுத்த வேண்டாம்.", "Keep the range easy and the breath relaxed.", "எளிய அசைவுகளுடன் இயல்பாக மூச்சு விடுங்கள்.", "Do not force a stretch or hold your breath.", "நீட்டலை வலுக்கட்டாயப்படுத்தவோ மூச்சை அடக்கவோ வேண்டாம்.", "Warm-up");
+      const cooldown = move("Cool-down & pelvic floor relaxation", "தளர்வு & இடுப்புத்தள ஓய்வு", "breath", ["core", "pelvic"], "10 min · comfortable breathing & gentle release", "Slow down; let the abdomen and pelvic floor soften on each inhale.", "மெதுவாகி, ஒவ்வொரு மூச்சிலும் வயிறு மற்றும் இடுப்புத்தளத்தைத் தளர்த்துங்கள்.", "Choose a comfortable position and allow the breath to settle.", "வசதியான நிலையில் இருந்து மூச்சை சீராக்குங்கள்.", "Do not squeeze the pelvic floor continuously or push through discomfort.", "இடுப்புத்தளத்தை தொடர்ந்து இறுக்கவோ அசௌகரியத்தைப் பொறுத்துக்கொள்ளவோ வேண்டாம்.", "Cool-down");
+      const phaseOne = {
+        start: 1, end: 25, title: "Foundation & Core Awakening", tamil: "அடித்தளம் & மையத் தசை விழிப்பு",
+        theme: "Low-pressure core coordination, symptom-free movement and easy walking",
+        warmup,
+        core: [
+          move("Pelvic tilts", "இடுப்பு சாய்வு", "tilt", ["core", "lower", "pelvic"], "8 gentle reps × 2 sets", "Rock the pelvis a small amount with an easy exhale; avoid forceful flattening.", "மூச்சை வெளியே விடும்போது இடுப்பை மெதுவாக அசையுங்கள்.", "Keep the movement small and comfortable.", "அசைவைச் சிறியதாகவும் வசதியாகவும் வைத்திருங்கள்.", "Do not brace hard, strain, or bear down.", "வயிற்றை வலுக்கட்டாயமாக இறுக்கவோ கீழ்நோக்கி அழுத்தவோ வேண்டாம்."),
+          move("Heel slides", "குதிகால் நழுவுதல்", "heel", ["core", "lower"], "6 each side × 2 sets", "Slide one heel only as far as you can without doming or discomfort.", "வயிறு கூம்பாமல் வசதியான அளவு மட்டும் குதிகாலை நழுவுங்கள்.", "Exhale softly as the leg lengthens.", "காலை நீட்டும்போது மெதுவாக மூச்சை வெளியே விடுங்கள்.", "Do not let the back arch or abdomen bulge.", "முதுகை வளைக்கவோ வயிறு கூம்பவோ விடாதீர்கள்."),
+          move("Glute bridges", "பிட்டப் பாலம்", "bridge", ["core", "lower", "pelvic", "glutes"], "8 reps × 2 sets", "Exhale as you lift hips only to a comfortable height; lower with control.", "மூச்சை வெளியே விடும்போது வசதியாக இடுப்பை உயர்த்தி மெதுவாக இறக்குங்கள்.", "Keep ribs relaxed and press evenly through both feet.", "விலா எலும்புகளைத் தளர்த்தி இரு பாதங்களையும் சமமாக அழுத்துங்கள்.", "Do not arch the back or continue if pelvic pressure appears.", "முதுகை வளைக்காதீர்கள்; இடுப்பில் அழுத்தம் வந்தால் நிறுத்துங்கள்."),
+          move("Cat-cow, small range", "பூனை-மாடு, சிறிய அசைவு", "catcow", ["core", "lower"], "6 slow cycles × 2 sets", "Move gently between comfortable positions on hands and knees.", "கைகள், முழங்காலில் வசதியான அளவில் மெதுவாக அசையுங்கள்.", "Coordinate an easy breath with each movement.", "ஒவ்வொரு அசைவுடனும் இயல்பாக மூச்சு விடுங்கள்.", "Do not force the spine into an extreme arch or curl.", "முதுகை அளவுக்கு மீறி வளைக்கவோ சுருக்கவோ வேண்டாம்."),
+          move("Seated core-breath coordination", "அமர்ந்து மைய மூச்சுப் பயிற்சி", "breath", ["core", "lower", "pelvic"], "6 relaxed breaths × 2 sets", "Sit supported and let the lower ribs widen as you inhale.", "ஆதரவுடன் அமர்ந்து மூச்சை உள்ளிழுக்கும்போது கீழ் விலா எலும்புகள் விரியட்டும்.", "Allow the belly and pelvic floor to soften on inhale.", "மூச்சை உள்ளிழுக்கும்போது வயிறு, இடுப்புத்தளம் தளரட்டும்.", "Do not draw in the abdomen forcefully or clench.", "வயிற்றை வலுக்கட்டாயமாக உள்ளிழுக்கவோ இறுக்கவோ வேண்டாம்.")
+        ],
+        cardio: [
+          move("Easy walk or seated march", "மெதுவான நடை அல்லது அமர்ந்து நடை", "march", ["core", "lower"], "15 min · conversational, low-impact pace", "Walk on a level route or march seated at a pace that feels easy to talk through.", "பேசிக்கொண்டே செய்யக்கூடிய மெதுவான வேகத்தில் நடக்கவும் அல்லது அமர்ந்து நடைபோடவும்.", "Use supportive shoes or a stable chair.", "ஆதரவான காலணி அல்லது உறுதியான நாற்காலியைப் பயன்படுத்துங்கள்.", "Do not jog or push through pain, leakage, or heaviness.", "வலி, சிறுநீர் கசிவு அல்லது கீழிறங்கும் அழுத்தத்தில் தொடர வேண்டாம்.", "Low-impact cardio")
+        ]
+      };
+      const phaseTwo = {
+        start: 26, end: 50, title: "Core Strengthening & Diastasis Recti Repair", tamil: "மையத் தசை வலிமை & வயிற்றுத் தசை இடைவெளி கவனம்",
+        theme: "Supported strength progressions; stop for doming, pressure or symptoms",
+        warmup,
+        core: [
+          move("Incline knee plank", "சாய்வான முழங்கால் பிளாங்க்", "plank", ["core", "lower"], "10–15 sec × 2 sets · wall/counter", "Use a wall or sturdy counter; keep breathing and the effort light.", "சுவர் அல்லது மேசையைப் பயன்படுத்தி மூச்சை இயல்பாக விடுங்கள்.", "Exhale gently and stop well before fatigue.", "மெதுவாக மூச்சை வெளியேவிட்டு சோர்வுக்கு முன் நிறுத்துங்கள்.", "Do not use a floor plank if you cannot prevent doming or pressure.", "வயிறு கூம்பினால் அல்லது அழுத்தம் ஏற்பட்டால் தரை பிளாங்க் வேண்டாம்."),
+          move("Bird-dog, supported reach", "எதிர் கை-கால் நீட்டல்", "bird", ["core", "lower"], "5 each side × 2 sets", "From hands and knees, reach only as far as you can stay steady.", "கைகள், முழங்காலில் நிலையாக இருக்கக்கூடிய அளவு மட்டும் நீட்டுங்கள்.", "Keep hips level and breathe continuously.", "இடுப்பை நேராக வைத்து தொடர்ந்து மூச்சு விடுங்கள்.", "Do not arch the back or let the abdomen dome.", "முதுகை வளைக்கவோ வயிறு கூம்பவோ விடாதீர்கள்."),
+          move("Modified dead-bug heel taps", "எளிய டெட்-பக் குதிகால் தொடுதல்", "deadbug", ["core", "lower"], "5 each side × 2 sets", "Tap one heel at a time; keep the range small enough for comfortable breathing.", "மூச்சு சீராக இருக்கும் அளவில் ஒரு குதிகாலை மட்டும் மெதுவாகத் தொடுங்கள்.", "Keep the movement slow and controlled.", "அசைவை மெதுவாகக் கட்டுப்பாட்டுடன் செய்யுங்கள்.", "Do not flatten the back forcefully or hold your breath.", "முதுகை வலுக்கட்டாயமாக அழுத்தவோ மூச்சை அடக்கவோ வேண்டாம்."),
+          move("Side-lying leg raise", "பக்கவாட்டுக் கால் உயர்த்தல்", "side", ["core", "lower", "glutes"], "8 each side × 2 sets", "Keep hips stacked and lift the top leg a small, controlled distance.", "இடுப்பை நேராக வைத்து மேலுள்ள காலை கட்டுப்பாட்டுடன் உயர்த்துங்கள்.", "Move from the hip without rolling your trunk.", "உடலை உருட்டாமல் இடுப்பிலிருந்து காலை அசையுங்கள்.", "Do not lift higher if your pelvis rocks or you feel pain.", "இடுப்பு அசைந்தாலோ வலி வந்தாலோ காலை மேலும் உயர்த்த வேண்டாம்."),
+          move("Standing march with gentle brace", "மென்மையான வயிற்று ஆதரவுடன் நின்று நடை", "march", ["core", "lower"], "8 each side × 2 sets", "Stand tall and alternate small knee lifts while breathing normally.", "நிமிர்ந்து நின்று மூச்சை இயல்பாக விடியுங்கள்; முழங்காலை மெதுவாக உயர்த்துங்கள்.", "Use a chair for balance if helpful.", "தேவையெனில் நாற்காலியைப் பிடித்து சமநிலைப் பெறுங்கள்.", "Do not brace hard or lift knees if it causes pressure.", "வயிற்றை வலுக்கட்டாயமாக இறுக்கவோ அழுத்தத்தில் தொடரவோ வேண்டாம்.")
+        ],
+        cardio: [
+          move("Marching in place", "ஓரிடத்தில் நடை", "march", ["core", "lower"], "15 min · low-impact, easy pace", "March gently beside a chair and keep the effort conversational.", "நாற்காலி அருகில் மெதுவாக நடைபோட்டு பேசக்கூடிய முயற்சியில் இருங்கள்.", "Keep steps quiet and relaxed.", "அடிகளை மெதுவாகவும் தளர்வாகவும் வையுங்கள்.", "Do not add jumps or sprint intervals.", "குதித்தல் அல்லது வேக ஓட்ட இடைவெளிகளைச் சேர்க்க வேண்டாம்.", "Low-impact cardio")
+        ]
+      };
+      const phaseThree = {
+        start: 51, end: 75, title: "Tummy Tucking & Active Fat Burn", tamil: "வயிற்றுப் பகுதி & செயல்பாட்டு கொழுப்பு எரிப்பு",
+        theme: "Higher-load movements remain optional and require comfortable control",
+        warmup,
+        core: [
+          move("Incline plank hold (optional)", "சாய்வு பிளாங்க் (விருப்பம்)", "plank", ["core", "lower"], "10–20 sec × 2 sets · incline option", "A floor plank is optional only with professional clearance and symptom-free control.", "நிபுணர் அனுமதி மற்றும் அறிகுறியில்லாத கட்டுப்பாடு இருந்தால் மட்டுமே தரை பிளாங்க்.", "Use a wall/counter regression and breathe steadily.", "சுவர் அல்லது மேசை ஆதரவுடன் மூச்சை சீராக விடுங்கள்.", "Stop for doming, pelvic pressure, leakage or pain.", "வயிறு கூம்புதல், கீழிறங்கும் அழுத்தம், கசிவு அல்லது வலியில் நிறுத்துங்கள்."),
+          move("Supine alternating heel taps", "படுத்த நிலையில் மாறி மாறி குதிகால் தொடுதல்", "deadbug", ["core", "lower"], "5 each side × 2 sets · small range", "Keep both feet supported; lift and lower one foot at a time only if you can breathe comfortably without abdominal doming.", "இரு பாதங்களையும் ஆதரித்து, வயிறு கூம்பாமல் மூச்சு சீராக இருந்தால் மட்டும் ஒரு காலை வீதம் உயர்த்தி இறக்குங்கள்.", "Move slowly and reduce the range or return to heel slides if needed.", "மெதுவாகச் செய்யுங்கள்; தேவையெனில் அசைவைக் குறைத்து குதிகால் நழுவுதலுக்கு திரும்புங்கள்.", "Stop for doming, pelvic pressure, leakage, pain, or breath-holding.", "வயிறு கூம்புதல், இடுப்பழுத்தம், கசிவு, வலி அல்லது மூச்சை அடக்குதல் ஏற்பட்டால் நிறுத்துங்கள்."),
+          move("Cat-cow", "பூனை-மாடு அசைவு", "catcow", ["core", "lower"], "6 slow cycles × 2 sets", "Move between comfortable positions with a smooth breath.", "மூச்சை சீராக விடியுங்கள்; வசதியான நிலையில் மெதுவாக அசையுங்கள்.", "Keep range comfortable and relaxed.", "வசதியான அளவில் தளர்வாகச் செய்யுங்கள்.", "Do not force end-range spinal flexion or extension.", "முதுகை கடைசி அளவு வலுக்கட்டாயமாக வளைக்க வேண்டாம்."),
+          move("Seated thoracic rotation", "அமர்ந்து மேல் முதுகை மெதுவாகத் திருப்புதல்", "twist", ["core"], "5 each side × 2 sets · feet supported", "Sit tall with both feet supported and rotate gently through the upper back within a comfortable range.", "இரு பாதங்களையும் தரையில் வைத்து நிமிர்ந்து அமர்ந்து, வசதியான அளவில் மேல் முதுகை மெதுவாகத் திருப்புங்கள்.", "Keep the pelvis facing forward and breathe out gently as you turn.", "இடுப்பை முன்னோக்கி வைத்து திரும்பும்போது மெதுவாக மூச்சை வெளியே விடுங்கள்.", "Avoid forceful twisting; stop for pain, pelvic pressure, or abdominal doming.", "வலுக்கட்டாயமாகத் திருப்ப வேண்டாம்; வலி, இடுப்பழுத்தம் அல்லது வயிறு கூம்பினால் நிறுத்துங்கள்."),
+          move("Standing glute kick-back", "நின்று பிட்டத் தசை கால் நீட்டல்", "kick", ["core", "glutes"], "8 each side × 2 sets · hold support", "Hold a stable support and extend one leg gently behind without arching.", "உறுதியான ஆதரவைப் பிடித்து முதுகை வளைக்காமல் ஒரு காலை பின்னால் நீட்டுங்கள்.", "Keep the range small and hips facing forward.", "அசைவைச் சிறியதாக வைத்து இடுப்பை முன்னோக்கி வையுங்கள்.", "Do not swing the leg or arch the lower back.", "காலை வேகமாக வீசவோ கீழ்முதுகை வளைக்கவோ வேண்டாம்.")
+        ],
+        cardio: [
+          move("Standing side steps or easy march", "நின்று பக்க அடி அல்லது மெதுவான நடை", "march", ["core", "lower"], "15 min · low-impact, conversational pace", "Alternate side steps and easy marching at a pace where conversation stays easy.", "பேசக்கூடிய மெதுவான வேகத்தில் பக்க அடி மற்றும் நடை மாற்றிச் செய்யுங்கள்.", "Keep knees soft and use a chair if needed.", "முழங்காலை தளர்வாக வைத்து தேவையெனில் நாற்காலியைப் பிடியுங்கள்.", "Do not jump or push through pelvic symptoms.", "குதிக்கவோ இடுப்புத்தள அறிகுறியுடன் தொடரவோ வேண்டாம்.", "Low-impact cardio")
+        ]
+      };
+      const phaseFour = {
+        start: 76, end: 100, title: "5kg Goal Lock & Final Sculpting", tamil: "5 கிலோ இலக்கு & இறுதி வடிவமைப்பு",
+        theme: "Optional advanced choices; no maximal HIIT or symptom-provoking exercise",
+        warmup,
+        core: [
+          move("Incline advanced core hold (optional)", "சாய்வான மேம்பட்ட மையத் தாங்கல் (விருப்பம்)", "plank", ["core", "lower"], "15–20 sec × 2 sets · wall/counter first", "Use an incline; a floor hold is not required and needs symptom-free control.", "சாய்வான ஆதரவைப் பயன்படுத்துங்கள்; தரை நிலை கட்டாயமில்லை.", "Breathe continuously and stop with good form.", "தொடர்ந்து மூச்சு விடுங்கள்; நல்ல நிலையில் இருக்கும்போதே நிறுத்துங்கள்.", "Do not hold your breath or allow abdominal doming.", "மூச்சை அடக்கவோ வயிறு கூம்பவோ விடாதீர்கள்."),
+          move("Low-impact mountain climber (incline)", "சாய்வான எளிய மவுண்டன் கிளைம்பர்", "climber", ["core", "lower"], "5 each side × 2 sets · slow steps", "Use a wall or counter and step one foot at a time at an easy pace.", "சுவர் அல்லது மேசையைப் பயன்படுத்தி ஒரு காலை வீதம் மெதுவாகச் செய்யுங்கள்.", "Keep steps controlled and torso comfortable.", "அசைவைக் கட்டுப்பாட்டுடன் செய்து உடலை வசதியாக வையுங்கள்.", "Do not sprint, hop, or continue with pressure or doming.", "வேகமாகவோ துள்ளியோ செய்யாதீர்கள்; அழுத்தம் அல்லது கூம்புதலில் நிறுத்துங்கள்."),
+          move("Dynamic core flow", "இயக்க மையத் தசை தொடர்", "flow", ["core", "lower", "pelvic"], "4 slow flows × 2 sets", "Link comfortable cat-cow, bird-dog and breathing without rushing.", "பூனை-மாடு, எதிர் கை-கால் நீட்டல், மூச்சுப் பயிற்சியை அவசரமின்றி இணைக்கவும்.", "Move smoothly and exhale with effort.", "மென்மையாக அசைந்து முயற்சியில் மூச்சை வெளியே விடுங்கள்.", "Do not use momentum or ignore symptoms.", "வேகத்தைப் பயன்படுத்தவோ அறிகுறிகளைப் புறக்கணிக்கவோ வேண்டாம்."),
+          move("Gentle abdominal brace and release", "மென்மையான வயிற்று ஆதரவு மற்றும் தளர்வு", "breath", ["core", "pelvic"], "6 relaxed breaths × 2 sets", "On an easy exhale, gently engage the lower abdomen without bearing down; fully release as you inhale.", "மெதுவாக மூச்சை வெளியே விடும்போது கீழ் வயிற்றை மென்மையாகச் செயல்படுத்தி, உள்ளிழுக்கும்போது முழுமையாகத் தளர்த்துங்கள்; கீழ்நோக்கி அழுத்த வேண்டாம்.", "Use only a light effort and keep breathing naturally.", "மிக மென்மையான முயற்சியுடன் இயல்பாக மூச்சு விடுங்கள்.", "Do not brace hard, hold your breath, or continue if you feel pressure or pain.", "வலுக்கட்டாயமாக இறுக்கவோ மூச்சை அடக்கவோ வேண்டாம்; அழுத்தம் அல்லது வலி ஏற்பட்டால் நிறுத்துங்கள்."),
+          move("Standing glute kick-back", "நின்று பிட்டத் தசை கால் நீட்டல்", "kick", ["core", "glutes"], "8 each side × 2 sets · supported", "Hold support and extend the leg gently behind while keeping ribs stacked.", "ஆதரவைப் பிடித்து விலா எலும்புகளை நேராக வைத்து காலை மெதுவாகப் பின்னால் நீட்டுங்கள்.", "Keep the pelvis level and movement controlled.", "இடுப்பை நேராக வைத்து அசைவைக் கட்டுப்படுத்துங்கள்.", "Do not arch your back or swing the leg.", "முதுகை வளைக்கவோ காலை வீசவோ வேண்டாம்.")
+        ],
+        cardio: [
+          move("Easy walk or low-impact step-touch", "மெதுவான நடை அல்லது எளிய பக்க அடி", "march", ["core", "lower"], "15 min · comfortable talking pace", "Choose a flat walk or step-touch at a pace that feels sustainable.", "தொடர்ந்து செய்யக்கூடிய வசதியான வேகத்தில் சமதள நடை அல்லது பக்க அடி செய்யுங்கள்.", "Keep breathing easy and adapt to fatigue.", "மூச்சை எளிதாக வைத்து சோர்வுக்கு ஏற்ப மாற்றுங்கள்.", "Do not sprint or use maximal intervals.", "வேக ஓட்டம் அல்லது அதிகபட்ச இடைவெளிப் பயிற்சி வேண்டாம்.", "Low-impact cardio")
+        ]
+      };
+      const phases = [phaseOne, phaseTwo, phaseThree, phaseFour].map((phase) => ({
+        ...phase,
+        cooldown: move("Cool-down & pelvic floor relaxation", "தளர்வு & இடுப்புத்தள ஓய்வு", "breath", ["core", "pelvic"], "10 min · slow breathing & gentle release", "Slow down and let the abdomen and pelvic floor soften; use only comfortable stretches.", "மெதுவாகி வயிறு, இடுப்புத்தளத்தைத் தளர்த்துங்கள்; வசதியான நீட்டல்கள் மட்டும்.", "Allow your breath to settle without effort.", "முயற்சியின்றி மூச்சை சீராக்குங்கள்.", "Do not force a Kegel or hold a stretch that causes symptoms.", "Kegel-ஐ வலுக்கட்டாயமாகச் செய்யவோ அறிகுறியுடன் நீட்டவோ வேண்டாம்.", "Cool-down")
+      }));
+
+      const encouragements = [
+        ["Small steps count.", "சிறிய முன்னேற்றமும் முக்கியம்."],
+        ["Rest is part of your strength.", "ஓய்வும் உங்கள் வலிமையின் ஒரு பகுதி."],
+        ["You are doing this at your pace.", "உங்கள் வேகத்தில் நீங்கள் முன்னேறுகிறீர்கள்."],
+        ["Progress, not perfection.", "முழுமையை விட முன்னேற்றமே முக்கியம்."]
+      ];
+      const dailyCareTips = [
+        {
+          hydration: "Keep water nearby and sip to thirst; follow your clinician's advice, especially while breastfeeding.",
+          hydrationTamil: "தண்ணீரை அருகில் வைத்து தாகத்திற்கேற்ப குடியுங்கள்; தாய்ப்பால் கொடுத்தால் மருத்துவரின் ஆலோசனையைப் பின்பற்றுங்கள்.",
+          nutrition: "Include a satisfying protein source and fruit or vegetables with a regular meal; no foods need to be banned.",
+          nutritionTamil: "வழக்கமான உணவில் புரதம், பழம் அல்லது காய்கறி சேர்த்துக் கொள்ளுங்கள்; உணவுகளைத் தடை செய்ய வேண்டாம்."
+        },
+        {
+          hydration: "Sip regularly around your walk or workout; you do not need to force a fixed water target.",
+          hydrationTamil: "நடை அல்லது பயிற்சியைச் சுற்றி தண்ணீர் குடியுங்கள்; கட்டாயமாக நிர்ணயித்த அளவு தேவையில்லை.",
+          nutrition: "Fiber-rich beans, lentils, vegetables or whole grains can make meals satisfying; choose what suits you.",
+          nutritionTamil: "பருப்பு, பயறு, காய்கறி அல்லது முழுத் தானியங்கள் நிறைவான உணவுக்கு உதவும்; உங்களுக்கு ஏற்றதைத் தேர்வு செய்யுங்கள்."
+        },
+        {
+          hydration: "Breastfeeding, heat and activity can change fluid needs; let thirst and personal medical advice guide you.",
+          hydrationTamil: "தாய்ப்பால், வெப்பம், உடற்பயிற்சி ஆகியவை தண்ணீர் தேவையை மாற்றலாம்; தாகம் மற்றும் மருத்துவ ஆலோசனையைப் பின்பற்றுங்கள்.",
+          nutrition: "Avoid skipping meals or crash diets. Recovery, energy and milk supply matter more than fast scale changes.",
+          nutritionTamil: "உணவைத் தவிர்ப்பதும் விரைவு டயட்டும் வேண்டாம்; விரைவான எடை மாற்றத்தை விட உடல்நலம் முக்கியம்."
+        },
+        {
+          hydration: "Keep a refillable bottle where you rest or feed your baby; drink comfortably, not by pressure.",
+          hydrationTamil: "ஓய்வெடுக்கும் அல்லது குழந்தைக்கு பால் கொடுக்கும் இடத்தில் தண்ணீர் வைத்துக் கொண்டு வசதியாகக் குடியுங்கள்.",
+          nutrition: "A balanced snack such as yogurt and fruit, or nuts and fruit, can support energy between meals.",
+          nutritionTamil: "தயிர்-பழம் அல்லது கொட்டைகள்-பழம் போன்ற சமநிலை சிற்றுண்டி சக்திக்கு உதவும்."
+        }
+      ];
+      const $ = (id) => document.getElementById(id);
+      const grid = $("day-grid");
+      const exerciseList = $("exercise-list");
+      const storageMessage = $("storage-message");
+      let activeTab = "home";
+      let activeDemo = null;
+
+      function setTab(tab, shouldScroll = true) {
+        if (!["home", "target", "water", "days"].includes(tab)) return;
+        activeTab = tab;
+        document.querySelectorAll("[data-tab-button]").forEach((button) => {
+          if (button.dataset.tabButton === tab) button.setAttribute("aria-current", "page");
+          else button.removeAttribute("aria-current");
+        });
+        document.querySelectorAll("[data-tab-panel]").forEach((panel) => {
+          panel.hidden = panel.dataset.tabPanel !== tab;
+        });
+        $("journey-workout-group").classList.toggle("hidden", tab !== "days" && tab !== "target");
+        if (shouldScroll) window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+      }
+
+      function closeDemo() {
+        if (!activeDemo) return;
+        const { panel, host, opener, backdrop } = activeDemo;
+        panel.querySelector("iframe").removeAttribute("src");
+        panel.classList.remove("is-modal");
+        panel.classList.add("hidden");
+        panel.removeAttribute("role");
+        panel.removeAttribute("aria-modal");
+        host.appendChild(panel);
+        backdrop.remove();
+        document.body.classList.remove("modal-open");
+        opener.setAttribute("aria-expanded", "false");
+        activeDemo = null;
+        opener.focus({ preventScroll: true });
+      }
+
+      function openDemo(panel, opener) {
+        if (activeDemo) closeDemo();
+        const host = panel.parentElement;
+        const backdrop = document.createElement("div");
+        backdrop.className = "demo-backdrop";
+        backdrop.setAttribute("aria-hidden", "true");
+        backdrop.addEventListener("click", closeDemo);
+        panel.classList.remove("hidden");
+        panel.classList.add("is-modal");
+        panel.setAttribute("role", "dialog");
+        panel.setAttribute("aria-modal", "true");
+        document.body.append(backdrop, panel);
+        document.body.classList.add("modal-open");
+        const videoFrame = panel.querySelector("iframe");
+        videoFrame.setAttribute("src", videoFrame.dataset.videoSrc);
+        opener.setAttribute("aria-expanded", "true");
+        activeDemo = { panel, host, opener, backdrop };
+        panel.querySelector("[data-demo-close]").focus({ preventScroll: true });
+      }
+      let state = {
+        completed: {},
+        completionDates: {},
+        selectedDay: 1,
+        water: { date: localDateKey(), count: 0 },
+        streak: 0
+      };
+      let storageAvailable = true;
+
+      function localDateKey(date = new Date()) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
+      }
+
+      function phaseForDay(day) {
+        return phases.findIndex((phase) => day >= phase.start && day <= phase.end);
+      }
+
+      function unlockedThrough() {
+        for (let day = 1; day <= TOTAL_DAYS; day += 1) if (!completedDay(day)) return day;
+        return TOTAL_DAYS;
+      }
+
+      function nextIncompleteDay() {
+        for (let day = 1; day <= TOTAL_DAYS; day += 1) if (!completedDay(day)) return day;
+        return null;
+      }
+
+      function loadState() {
+        try {
+          const saved = localStorage.getItem(STORAGE_KEY) || PREVIOUS_STORAGE_KEYS.map((key) => localStorage.getItem(key)).find(Boolean);
+          if (!saved) return;
+          const parsed = JSON.parse(saved);
+          if (!parsed || typeof parsed !== "object" || !parsed.completed || typeof parsed.completed !== "object") {
+            throw new Error("Saved progress has an invalid format.");
+          }
+          const completed = {};
+          for (let day = 1; day <= TOTAL_DAYS; day += 1) {
+            const checks = parsed.completed[day];
+            if (Array.isArray(checks)) {
+              completed[day] = Array.from({ length: EXERCISES_PER_DAY }, (_, index) => checks[index] === true);
+            }
+          }
+          const selectedDay = Number.isInteger(parsed.selectedDay) && parsed.selectedDay >= 1 && parsed.selectedDay <= TOTAL_DAYS
+            ? parsed.selectedDay : 1;
+          const completionDates = parsed.completionDates && typeof parsed.completionDates === "object" ? parsed.completionDates : {};
+          const savedWater = parsed.water && typeof parsed.water === "object" ? parsed.water : {};
+          const water = savedWater.date === localDateKey() && Number.isInteger(savedWater.count)
+            ? { date: savedWater.date, count: Math.min(8, Math.max(0, savedWater.count)) }
+            : { date: localDateKey(), count: 0 };
+          state = {
+            completed, completionDates, selectedDay, water,
+            streak: Number.isInteger(parsed.streak) && parsed.streak >= 0 ? parsed.streak : 0
+          };
+          if (selectedDay > unlockedThrough()) state.selectedDay = unlockedThrough();
+          if (!localStorage.getItem(STORAGE_KEY)) saveState();
+        } catch (error) {
+          storageMessage.textContent = "We couldn't read your saved progress. Your tracker is still usable, but this session's changes may not be saved. You can reset the saved data if you want to start fresh.";
+          storageMessage.classList.remove("hidden");
+          storageAvailable = false;
+          console.error("Unable to load saved challenge progress:", error);
+        }
+      }
+
+      function saveState() {
+        if (!storageAvailable) return;
+        try {
+          state.streak = currentStreak();
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+          storageMessage.classList.add("hidden");
+        } catch (error) {
+          storageAvailable = false;
+          storageMessage.textContent = "Progress couldn't be saved in this browser. The tracker will work until you close this page; check your browser storage settings.";
+          storageMessage.classList.remove("hidden");
+          console.error("Unable to save challenge progress:", error);
+        }
+      }
+
+      function completedDay(day) {
+        return Array.isArray(state.completed[day]) && state.completed[day].length === EXERCISES_PER_DAY && state.completed[day].every(Boolean);
+      }
+
+      function completeDayCount() {
+        let count = 0;
+        for (let day = 1; day <= TOTAL_DAYS; day += 1) if (completedDay(day)) count += 1;
+        return count;
+      }
+
+      function currentStreak() {
+        const completedDates = new Set(
+          Object.entries(state.completionDates)
+            .filter(([day, date]) => completedDay(Number(day)) && typeof date === "string")
+            .map(([, date]) => date)
+        );
+        const today = new Date();
+        const yesterday = new Date(today);
+        yesterday.setDate(yesterday.getDate() - 1);
+        const cursor = new Date(completedDates.has(localDateKey(today)) ? today : yesterday);
+        if (!completedDates.has(localDateKey(cursor))) return 0;
+        let streak = 0;
+        while (completedDates.has(localDateKey(cursor))) {
+          streak += 1;
+          cursor.setDate(cursor.getDate() - 1);
+        }
+        return streak;
+      }
+
+      function exercisesForDay(day) {
+        const phaseIndex = phaseForDay(day);
+        const phase = phases[phaseIndex];
+        const phaseDay = day - phase.start;
+        const start = phaseDay % phase.core.length;
+        const step = phaseDay % 2 === 0 ? 1 : 2;
+        const core = [];
+        let cursor = start;
+        while (core.length < 3) {
+          const candidate = phase.core[cursor % phase.core.length];
+          if (!core.includes(candidate)) core.push(candidate);
+          cursor += step;
+        }
+        const progressionLevel = Math.floor(phaseDay / 10);
+        return [phase.warmup, ...core, phase.cardio[phaseDay % phase.cardio.length], phase.cooldown]
+          .map((exercise, index) => {
+            const dose = exercise.segment === "Core" && progressionLevel > 0
+              ? exercise.dose.replace(/\d+(?:[–-]\d+)?/, (range) => range.split(/[–-]/).map((value) => String(Number(value) + progressionLevel)).join("–"))
+              : exercise.dose;
+            return {
+              ...exercise,
+              dose,
+              day,
+              sequence: index + 1,
+              progression: `Day ${String(day).padStart(2, "0")} · ${phaseDay % 5 === 0 ? "reset & control" : phaseDay % 5 === 1 ? "smooth tempo" : phaseDay % 5 === 2 ? "steady breathing" : phaseDay % 5 === 3 ? "comfortable range" : "quality reps"}`
+            };
+          });
+      }
+
+      function renderGrid() {
+        const fragment = document.createDocumentFragment();
+        const lastUnlocked = unlockedThrough();
+        for (let day = 1; day <= TOTAL_DAYS; day += 1) {
+          const button = document.createElement("button");
+          const done = completedDay(day);
+          const locked = day > lastUnlocked && !done;
+          button.type = "button";
+          button.disabled = locked;
+          button.className = "day-button relative grid aspect-square place-items-center rounded-xl border text-sm font-bold " +
+            (day === state.selectedDay ? "border-rose-600 bg-rose-500 text-white shadow-sm " :
+              done ? "border-sage-200 bg-sage-50 text-sage-700 hover:bg-sage-100 " :
+                locked ? "cursor-not-allowed border-slate-100 bg-slate-50 text-slate-300 " :
+                  "border-slate-100 bg-white text-slate-600 hover:border-rose-200 hover:bg-rose-50 ");
+          button.setAttribute("aria-label", `Day ${day}${done ? ", completed" : locked ? ", locked" : ", available"}${day === state.selectedDay ? ", selected" : ""}`);
+          button.setAttribute("aria-pressed", String(day === state.selectedDay));
+          button.textContent = String(day);
+          if (done) {
+            const mark = document.createElement("span");
+            mark.className = "absolute -right-1 -top-1 grid h-4 w-4 place-items-center rounded-full bg-emerald-500 text-white";
+            mark.innerHTML = '<i data-lucide="check" class="h-2.5 w-2.5"></i>';
+            button.appendChild(mark);
+          } else if (locked) {
+            const mark = document.createElement("span");
+            mark.className = "absolute -right-1 -top-1 grid h-4 w-4 place-items-center rounded-full bg-slate-300 text-white";
+            mark.innerHTML = '<i data-lucide="lock" class="h-2.5 w-2.5"></i>';
+            button.appendChild(mark);
+          }
+          button.addEventListener("click", () => {
+            state.selectedDay = day;
+            saveState();
+            render();
+          });
+          fragment.appendChild(button);
+        }
+        grid.replaceChildren(fragment);
+      }
+
+      function renderWater() {
+        if (state.water.date !== localDateKey()) state.water = { date: localDateKey(), count: 0 };
+        const fragment = document.createDocumentFragment();
+        for (let glass = 1; glass <= 8; glass += 1) {
+          const button = document.createElement("button");
+          const filled = glass <= state.water.count;
+          button.type = "button";
+          button.className = `water-glass rounded-2xl border p-3 text-center transition ${filled ? "border-sky-200 bg-sky-50 text-sky-700" : "border-slate-100 bg-white text-slate-400 hover:border-sky-100 hover:bg-sky-50"}`;
+          button.setAttribute("aria-label", `Glass ${glass}${filled ? ", logged" : ""}`);
+          button.setAttribute("aria-pressed", String(filled));
+          button.innerHTML = `<span class="block text-xl" aria-hidden="true">${filled ? "💧" : "○"}</span><span class="mt-1 block text-[10px] font-bold">Glass ${glass}</span>`;
+          button.addEventListener("click", () => {
+            if (state.water.date !== localDateKey()) state.water = { date: localDateKey(), count: 0 };
+            state.water = { date: localDateKey(), count: state.water.count === glass ? glass - 1 : glass };
+            saveState();
+            renderWater();
+          });
+          fragment.appendChild(button);
+        }
+        $("water-grid").replaceChildren(fragment);
+        $("water-count").textContent = `${state.water.count}/8 Glasses`;
+      }
+
+      function createDemoPanel(exercise, index) {
+        const videoId = exercise.youtubeVideoId;
+        if (!/^[A-Za-z0-9_-]{11}$/.test(videoId || "")) {
+          console.error(`Missing YouTube demo video ID for exercise: ${exercise.name}`);
+          throw new Error(`No verified YouTube demo is configured for ${exercise.name}.`);
+        }
+        const watchUrl = `https://www.youtube.com/watch?v=${videoId}`;
+        const panel = document.createElement("section");
+        panel.className = "demo-panel mt-4 hidden overflow-hidden rounded-2xl border border-rose-100 bg-white p-4 shadow-soft sm:p-5";
+        panel.id = `exercise-demo-${state.selectedDay}-${index}`;
+        panel.setAttribute("role", "dialog");
+        panel.setAttribute("aria-modal", "true");
+        panel.setAttribute("aria-labelledby", `${panel.id}-title`);
+
+        const headingRow = document.createElement("div");
+        headingRow.className = "flex items-start justify-between gap-3";
+        const heading = document.createElement("h3");
+        heading.id = `${panel.id}-title`;
+        heading.className = "font-extrabold text-slate-900";
+        heading.textContent = `Exercise video · ${exercise.name}`;
+        const closeButton = document.createElement("button");
+        closeButton.type = "button";
+        closeButton.dataset.demoClose = "";
+        closeButton.className = "inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50";
+        closeButton.setAttribute("aria-label", "Close exercise video");
+        closeButton.innerHTML = '<i data-lucide="x" class="h-5 w-5"></i>';
+        closeButton.addEventListener("click", closeDemo);
+        headingRow.append(heading, closeButton);
+
+        const videoFrame = document.createElement("iframe");
+        videoFrame.className = "aspect-video w-full rounded-xl bg-slate-950";
+        videoFrame.title = `${exercise.name} exercise demonstration video`;
+        videoFrame.dataset.videoSrc = `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1`;
+        videoFrame.src = "";
+        videoFrame.loading = "lazy";
+        videoFrame.referrerPolicy = "strict-origin-when-cross-origin";
+        videoFrame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+        videoFrame.allowFullscreen = true;
+        const videoWrap = document.createElement("div");
+        videoWrap.className = "mt-4 overflow-hidden rounded-xl bg-slate-950";
+        videoWrap.appendChild(videoFrame);
+
+        const watchLink = document.createElement("a");
+        watchLink.className = "mt-3 inline-flex min-h-11 items-center justify-center rounded-xl border border-rose-200 bg-rose-50 px-4 py-2.5 text-sm font-bold text-rose-700 hover:bg-rose-100";
+        watchLink.href = watchUrl;
+        watchLink.target = "_blank";
+        watchLink.rel = "noopener noreferrer";
+        watchLink.textContent = "🔗 Open Video Link in YouTube";
+        const exactUrl = document.createElement("code");
+        exactUrl.className = "mt-1 block break-all text-[11px] leading-5 text-slate-500";
+        exactUrl.textContent = watchUrl;
+
+        const [doEnglish, doTamil] = exercise.do.split("|").map((step) => step.trim());
+        const [noteEnglish, noteTamil] = exercise.note.split("|").map((step) => step.trim());
+        const [dontEnglish, dontTamil] = exercise.dont.split("|").map((step) => step.trim());
+        const instructions = document.createElement("div");
+        instructions.className = "mt-4 space-y-3";
+        const dose = document.createElement("p");
+        dose.className = "rounded-xl bg-sage-50 p-3 text-sm font-bold text-sage-800";
+        dose.textContent = `Today's dose · இன்றைய அளவு: ${exercise.dose}`;
+        instructions.appendChild(dose);
+        [
+          { title: "Form steps · English", text: `1. Setup: ${noteEnglish || "Settle into a comfortable position."}\n2. Movement: ${doEnglish || "Move gently and keep breathing."}` },
+          { title: "செய்முறை · தமிழ்", text: `1. தொடக்கம்: ${noteTamil || "வசதியான நிலையில் இருங்கள்."}\n2. அசைவு: ${doTamil || "மெதுவாக அசைந்து மூச்சை இயல்பாக விடுங்கள்."}` },
+          { title: "Safety cue · பாதுகாப்பு", text: `${dontEnglish || "Stop if you feel discomfort."} · ${dontTamil || "அசௌகரியம் ஏற்பட்டால் நிறுத்துங்கள்."}` }
+        ].forEach((item) => {
+          const block = document.createElement("div");
+          block.className = "rounded-xl border border-slate-100 bg-slate-50 p-3";
+          const label = document.createElement("p");
+          label.className = "text-xs font-extrabold text-slate-600";
+          label.textContent = item.title;
+          const copy = document.createElement("p");
+          copy.className = "mt-1 whitespace-pre-line text-sm leading-6 text-slate-700";
+          copy.textContent = item.text;
+          block.append(label, copy);
+          instructions.appendChild(block);
+        });
+
+        const disclaimer = document.createElement("p");
+        disclaimer.className = "mt-3 text-[11px] leading-5 text-slate-500";
+        disclaimer.textContent = "Video content is provided by its YouTube publisher and is not medical advice. Follow your clinician's clearance and stop for pain, pelvic heaviness/pressure, leakage, bleeding, or abdominal doming.";
+        if (window.location.protocol === "file:") {
+          disclaimer.textContent = `YouTube may block embedded playback when this page is opened directly from file://. Serve the app from HTTP/HTTPS or use the direct YouTube link above. ${disclaimer.textContent}`;
+        }
+        panel.append(headingRow, videoWrap, watchLink, exactUrl, instructions, disclaimer);
+        return panel;
+      }
+      function renderExercises() {
+        const day = state.selectedDay;
+        const tasks = exercisesForDay(day);
+        const checks = state.completed[day] || Array(EXERCISES_PER_DAY).fill(false);
+        const fragment = document.createDocumentFragment();
+        tasks.forEach((exercise, index) => {
+          const card = document.createElement("article");
+          card.className = "exercise-card rounded-2xl border border-slate-100 bg-white p-3.5 sm:p-4" + (checks[index] ? " is-done" : "");
+
+          const row = document.createElement("div");
+          row.className = "flex items-start gap-3";
+          const label = document.createElement("label");
+          label.className = "flex min-w-0 flex-1 cursor-pointer items-start gap-3";
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.className = "exercise-check sr-only";
+          checkbox.checked = Boolean(checks[index]);
+          checkbox.setAttribute("aria-label", `Complete ${exercise.name}, ${exercise.tamil}`);
+          const indicator = document.createElement("span");
+          indicator.className = "checkbox-indicator mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-lg border-2 border-slate-200 bg-white text-base font-black leading-none text-white transition-colors";
+          indicator.setAttribute("aria-hidden", "true");
+          indicator.textContent = "✓";
+          const content = document.createElement("span");
+          content.className = "min-w-0 flex-1";
+          const name = document.createElement("span");
+          name.className = "flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1";
+          const title = document.createElement("span");
+          title.className = "font-bold text-slate-800";
+          title.textContent = `${index + 1}. ${exercise.name}`;
+          const segment = document.createElement("span");
+          segment.className = "rounded-full bg-slate-50 px-2.5 py-1 text-[11px] font-bold text-slate-600";
+          segment.textContent = `${exercise.segment} · ${exercise.minutes} min`;
+          const dose = document.createElement("span");
+          dose.className = "mt-1 block text-xs font-bold text-sage-700";
+          dose.textContent = exercise.dose;
+          name.append(title, segment);
+          const tamil = document.createElement("span");
+          tamil.className = "mt-0.5 block text-sm font-medium text-rose-700";
+          tamil.textContent = exercise.tamil;
+          const note = document.createElement("span");
+          note.className = "mt-1 block text-xs leading-5 text-slate-600";
+          note.textContent = exercise.note;
+          const metrics = document.createElement("span");
+          metrics.className = "mt-1 flex flex-wrap gap-x-3 gap-y-1 text-[11px] font-semibold text-slate-500";
+          const calorieEstimate = document.createElement("span");
+          calorieEstimate.textContent = `Estimated energy · ${exercise.calories}`;
+          const progression = document.createElement("span");
+          progression.textContent = exercise.progression;
+          metrics.append(calorieEstimate, progression);
+          content.append(name, dose, tamil, note, metrics);
+          label.append(checkbox, indicator, content);
+          const demoButton = document.createElement("button");
+          demoButton.type = "button";
+          demoButton.className = "demo-toggle inline-flex min-h-11 shrink-0 items-center gap-1.5 rounded-xl border border-rose-100 bg-rose-50 px-3 py-2 text-sm font-bold text-rose-700 hover:border-rose-200 hover:bg-rose-100";
+          demoButton.setAttribute("aria-expanded", "false");
+          demoButton.textContent = "▶️ Demo Video";
+          const panel = createDemoPanel(exercise, index);
+          demoButton.setAttribute("aria-controls", panel.id);
+          demoButton.addEventListener("click", () => openDemo(panel, demoButton));
+          row.appendChild(label);
+          const demoSection = document.createElement("div");
+          demoSection.className = "mt-3 flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 pt-3";
+          const demoLabel = document.createElement("span");
+          demoLabel.className = "text-xs font-bold text-slate-500";
+          demoLabel.textContent = "YouTube Demo · வீடியோ விளக்கம்";
+          demoSection.append(demoLabel, demoButton);
+          card.append(row, demoSection, panel);
+          checkbox.addEventListener("change", () => toggleExercise(day, index, checkbox.checked));
+          fragment.appendChild(card);
+        });
+        exerciseList.replaceChildren(fragment);
+        const doneCount = checks.filter(Boolean).length;
+        const percent = Math.round((doneCount / EXERCISES_PER_DAY) * 100);
+        $("day-percent").textContent = `${percent}%`;
+        $("day-fill").style.width = `${percent}%`;
+        $("day-progress").setAttribute("aria-valuenow", String(doneCount));
+        $("day-progress-label").textContent = `${doneCount} of ${EXERCISES_PER_DAY} exercises complete`;
+        $("day-celebration").classList.toggle("hidden", !completedDay(day));
+      }
+
+      function renderSummary() {
+        const day = state.selectedDay;
+        const phaseIndex = phaseForDay(day);
+        const phase = phases[phaseIndex];
+        const dayExercises = exercisesForDay(day);
+        const minutes = dayExercises.reduce((total, exercise) => total + exercise.minutes, 0);
+        const segmentMinutes = (segment) => dayExercises
+          .filter((exercise) => exercise.segment === segment)
+          .reduce((total, exercise) => total + exercise.minutes, 0);
+        const complete = completeDayCount();
+        const percent = complete;
+        $("phase-name").textContent = phase.title;
+        $("phase-tamil").textContent = phase.tamil;
+        $("phase-badge").textContent = `PHASE ${phaseIndex + 1}`;
+        $("overall-percent").textContent = `${percent}%`;
+        $("overall-fill").style.width = `${percent}%`;
+        $("overall-progress").setAttribute("aria-valuenow", String(percent));
+        $("overall-count").textContent = `${complete} of ${TOTAL_DAYS} days complete · ${100 - complete} to go`;
+        const nextDay = nextIncompleteDay();
+        $("continue-label").textContent = nextDay ? `Continue · Day ${nextDay}` : "Review · Day 100";
+        $("continue-button").setAttribute("aria-label", nextDay ? `Continue challenge at day ${nextDay}` : "Review completed challenge, day 100");
+        $("streak-count").textContent = String(currentStreak());
+        $("days-count").textContent = String(complete);
+        const quickDone = (state.completed[day] || []).filter(Boolean).length;
+        $("today-quick-progress").textContent = `${quickDone} of ${EXERCISES_PER_DAY} tasks done · Day ${day}`;
+        $("today-quick-fill").style.width = `${Math.round((quickDone / EXERCISES_PER_DAY) * 100)}%`;
+        $("selected-day-label").textContent = String(day);
+        $("day-theme").textContent = phase.theme;
+        $("day-duration").textContent = `${minutes} min total · ${segmentMinutes("Warm-up")} warm-up + ${segmentMinutes("Core")} core + ${segmentMinutes("Low-impact cardio")} cardio + ${segmentMinutes("Cool-down")} cool-down`;
+        const encouragement = encouragements[(day - 1) % encouragements.length];
+        $("motivation").textContent = `${encouragement[0]} ${encouragement[1]}`;
+        const careTip = dailyCareTips[(day - 1) % dailyCareTips.length];
+        $("hydration-tip").textContent = careTip.hydration;
+        $("hydration-tip-ta").textContent = careTip.hydrationTamil;
+        $("nutrition-tip").textContent = careTip.nutrition;
+        $("nutrition-tip-ta").textContent = careTip.nutritionTamil;
+      }
+
+      function render() {
+        renderSummary();
+        renderGrid();
+        renderExercises();
+        renderWater();
+        if (window.lucide) window.lucide.createIcons();
+      }
+
+      function toggleExercise(day, index, checked) {
+        if (!Array.isArray(state.completed[day])) state.completed[day] = Array(EXERCISES_PER_DAY).fill(false);
+        const wasComplete = completedDay(day);
+        state.completed[day][index] = checked;
+        const isComplete = completedDay(day);
+        if (!wasComplete && isComplete) state.completionDates[day] = localDateKey();
+        if (wasComplete && !isComplete) delete state.completionDates[day];
+        if (state.selectedDay > unlockedThrough()) state.selectedDay = unlockedThrough();
+        saveState();
+        render();
+        if (!wasComplete && completedDay(day) && typeof window.confetti === "function") {
+          window.confetti({ particleCount: 180, spread: 90, startVelocity: 45, origin: { y: 0.68 }, colors: ["#e56f83", "#10b981", "#ffd166", "#60a5fa", "#ffffff"] });
+          window.setTimeout(() => window.confetti({ particleCount: 90, angle: 60, spread: 65, origin: { x: 0, y: 0.72 }, colors: ["#e56f83", "#10b981", "#ffd166", "#60a5fa"] }), 180);
+          window.setTimeout(() => window.confetti({ particleCount: 90, angle: 120, spread: 65, origin: { x: 1, y: 0.72 }, colors: ["#e56f83", "#10b981", "#ffd166", "#60a5fa"] }), 320);
+        }
+      }
+
+      $("water-reset").addEventListener("click", () => {
+        state.water = { date: localDateKey(), count: 0 };
+        saveState();
+        renderWater();
+      });
+
+      $("continue-button").addEventListener("click", () => {
+        state.selectedDay = nextIncompleteDay() || TOTAL_DAYS;
+        saveState();
+        render();
+        setTab("target", false);
+        $("workout-section").scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+        $("target-title").focus({ preventScroll: true });
+      });
+
+      document.querySelectorAll("[data-tab-button]").forEach((button) => {
+        button.addEventListener("click", () => setTab(button.dataset.tabButton));
+      });
+      document.addEventListener("keydown", (event) => {
+        if (!activeDemo) return;
+        if (event.key === "Escape") {
+          closeDemo();
+          return;
+        }
+        if (event.key !== "Tab") return;
+        const focusable = Array.from(activeDemo.panel.querySelectorAll("button:not([disabled]), [href], iframe, input:not([disabled]), [tabindex]:not([tabindex='-1'])"));
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      });
+
+      $("reset-button").addEventListener("click", () => {
+        const confirmed = window.confirm("Reset all 100 days of saved progress? This cannot be undone. / 100 நாட்களின் முன்னேற்றத்தையும் மீட்டமைக்கவா?");
+        if (!confirmed) return;
+        state = { completed: {}, completionDates: {}, selectedDay: 1, water: { date: localDateKey(), count: 0 }, streak: 0 };
+        storageAvailable = true;
+        try {
+          localStorage.removeItem(STORAGE_KEY);
+          PREVIOUS_STORAGE_KEYS.forEach((key) => localStorage.removeItem(key));
+          storageMessage.classList.add("hidden");
+        } catch (error) {
+          storageAvailable = false;
+          storageMessage.textContent = "Saved progress could not be cleared because browser storage is unavailable.";
+          storageMessage.classList.remove("hidden");
+          console.error("Unable to clear saved challenge progress:", error);
+        }
+        render();
+      });
+
+      loadState();
+      setTab("home", false);
+      render();
+    })();
+  </script>
+</body>
+</html>
